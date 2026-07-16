@@ -5,6 +5,7 @@ import DashboardLayout from './layouts/DashboardLayout';
 import LandingPage from './pages/LandingPage';
 import Dashboard from './pages/Dashboard';
 import DecisionConsole from './pages/DecisionConsole';
+import Settings from './pages/Settings';
 
 const NotFound = () => <div className="p-8 text-center text-slate-400">404 - Page Not Found</div>;
 
@@ -18,6 +19,7 @@ function App() {
         <Route element={<DashboardLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/decision/:transactionId" element={<DecisionConsole />} />
+          <Route path="/settings" element={<Settings />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

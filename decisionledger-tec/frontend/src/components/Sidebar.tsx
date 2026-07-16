@@ -4,9 +4,7 @@ import { LayoutDashboard, FileText, Settings, Info } from 'lucide-react';
 export default function Sidebar() {
   const navItems = [
     { name: 'Dashboard', path: '/dashboard', icon: <LayoutDashboard size={20} /> },
-    { name: 'Decision Console', path: '/decision/placeholder', icon: <FileText size={20} /> },
-    { name: 'Settings', path: '/settings', icon: <Settings size={20} />, disabled: true },
-    { name: 'About', path: '/about', icon: <Info size={20} /> },
+    { name: 'Settings', path: '/settings', icon: <Settings size={20} /> },
   ];
 
   return (

@@ -41,9 +41,9 @@ export default function LandingPage() {
                 Launch Dashboard
                 <Activity size={18} />
               </Link>
-              <button className="px-6 py-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-medium transition-colors border border-slate-700">
+              <a href="#architecture" className="px-6 py-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-medium transition-colors border border-slate-700">
                 View Architecture
-              </button>
+              </a>
             </div>
           </motion.div>
 
@@ -90,7 +90,7 @@ export default function LandingPage() {
 
         </div>
         
-        <div className="mt-32 pb-20">
+        <div id="architecture" className="mt-32 pb-20">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-white mb-4">Enterprise Grade Telemetry</h2>
             <p className="text-slate-400 max-w-2xl mx-auto">Unify your cybersecurity signals with transactional data to stop fraud before it happens.</p>

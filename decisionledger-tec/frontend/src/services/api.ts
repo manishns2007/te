@@ -33,7 +33,11 @@ export const PredictionService = {
     repredict: async (id: string): Promise<Prediction> => {
         const res = await api.post(`/transactions/${id}/repredict`);
         return res.data;
+    },
+    getRelationshipGraph: async (id: string) => {
+        const res = await api.get(`/transactions/${id}/relationship-graph`);
+        return res.data;
     }
-}
+};
 
 export default api;

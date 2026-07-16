@@ -30,6 +30,30 @@ export interface InvestigationDecision {
   created_at: string;
 }
 
+export interface ErrorResponse {
+  detail: string;
+}
+
+export interface GraphNode {
+  id: string;
+  type: string;
+  label: string;
+  risk: string;
+  description?: string;
+}
+
+export interface GraphEdge {
+  id: string;
+  source: string;
+  target: string;
+  relationship: string;
+}
+
+export interface GraphResponse {
+  nodes: GraphNode[];
+  edges: GraphEdge[];
+}
+
 export interface Transaction {
   id: string;
   account_id: string;

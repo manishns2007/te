@@ -9,6 +9,8 @@ from app.services.dashboard import DashboardService
 from app.services.transaction import TransactionService
 from app.services.decision import DecisionService
 from app.services.prediction import PredictionService
+from app.services.graph import GraphService
+from app.schemas.graph_schemas import GraphResponse
 from app.core.logger import get_logger
 
 logger = get_logger("api")
@@ -41,3 +43,8 @@ def submit_decision(transaction_id: str, decision: InvestigationDecisionCreate, 
 def repredict_transaction(transaction_id: str, db: Session = Depends(get_db)):
     logger.info(f"Running repredict for {transaction_id}")
     return PredictionService.repredict(db, transaction_id)
+
+@router.get("/transactions/{transaction_id}/relationship-graph", response_model=GraphResponse, summary="Get Fraud Investigation Graph")
+def get_relationship_graph(transaction_id: str, db: Session = Depends(get_db)):
+    logger.info(f"Fetching relationship graph for {transaction_id}")
+    return GraphService.get_relationship_graph(db, transaction_id)

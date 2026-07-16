@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Activity, Shield, Zap, BarChart3, Database } from 'lucide-react';
 import { Card } from '../components/Card';
-import { StatusChip } from '../components/StatusChip';
 import VariableProximity from '../components/VariableProximity';
 import Particles from '../components/Particles';
 import TerminalAnimation from '../components/TerminalAnimation';

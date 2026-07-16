@@ -1,9 +1,10 @@
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, FileText, Settings, Info } from 'lucide-react';
+import { LayoutDashboard, Settings, Lock } from 'lucide-react';
 
 export default function Sidebar() {
   const navItems = [
     { name: 'Dashboard', path: '/dashboard', icon: <LayoutDashboard size={20} /> },
+    { name: 'Audit Ledger', path: '/ledger', icon: <Lock size={20} /> },
     { name: 'Settings', path: '/settings', icon: <Settings size={20} /> },
   ];
 

@@ -1,12 +1,16 @@
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Activity, Shield, Zap, BarChart3, Database } from 'lucide-react';
 import { Card } from '../components/Card';
 import { StatusChip } from '../components/StatusChip';
+import VariableProximity from '../components/VariableProximity';
 
 export default function LandingPage() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   return (
-    <div className="min-h-screen bg-background overflow-hidden relative">
+    <div className="min-h-screen bg-background overflow-hidden relative" ref={containerRef}>
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/10 blur-[100px]" />
         <div className="absolute top-[20%] right-[-5%] w-[30%] h-[30%] rounded-full bg-risk-red/10 blur-[100px]" />
@@ -26,7 +30,15 @@ export default function LandingPage() {
             </div>
             
             <h1 className="text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 tracking-tight">
-              AI-Powered Banking Fraud <br/>
+              <VariableProximity
+                label="AI-Powered Banking Fraud"
+                fromFontVariationSettings="'wght' 400, 'opsz' 9"
+                toFontVariationSettings="'wght' 900, 'opsz' 40"
+                containerRef={containerRef}
+                radius={200}
+                falloff="linear"
+              />
+              <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Decision Intelligence</span>
             </h1>
             

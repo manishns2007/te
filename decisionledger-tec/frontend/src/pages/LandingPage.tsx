@@ -6,6 +6,7 @@ import { Card } from '../components/Card';
 import { StatusChip } from '../components/StatusChip';
 import VariableProximity from '../components/VariableProximity';
 import Particles from '../components/Particles';
+import TerminalAnimation from '../components/TerminalAnimation';
 
 export default function LandingPage() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -77,39 +78,7 @@ export default function LandingPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
           >
-             <Card className="bg-slate-900/80 backdrop-blur-xl border-slate-700 p-6 shadow-2xl relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-risk-red to-risk-orange" />
-                <div className="flex justify-between items-center mb-6">
-                  <div>
-                    <h3 className="text-white font-medium text-lg">Transaction Analysis</h3>
-                    <p className="text-slate-400 text-sm">TXN-982374982</p>
-                  </div>
-                  <StatusChip status="FREEZE" />
-                </div>
-                
-                <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
-                    <p className="text-slate-400 text-xs mb-1">Fraud Probability</p>
-                    <p className="text-3xl font-bold text-risk-red">94.2%</p>
-                  </div>
-                  <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
-                    <p className="text-slate-400 text-xs mb-1">Prevented Loss</p>
-                    <p className="text-3xl font-bold text-risk-green">,450</p>
-                  </div>
-                </div>
-
-                <div className="space-y-3">
-                  <h4 className="text-sm font-medium text-slate-300">Top Risk Factors (SHAP)</h4>
-                  <div className="bg-slate-800/50 p-3 rounded border border-slate-700 flex justify-between items-center">
-                    <span className="text-sm text-slate-300">Impossible Travel</span>
-                    <span className="text-xs bg-risk-red/20 text-risk-red px-2 py-1 rounded">+2.45</span>
-                  </div>
-                  <div className="bg-slate-800/50 p-3 rounded border border-slate-700 flex justify-between items-center">
-                    <span className="text-sm text-slate-300">VPN Detected</span>
-                    <span className="text-xs bg-risk-red/20 text-risk-red px-2 py-1 rounded">+1.82</span>
-                  </div>
-                </div>
-             </Card>
+             <TerminalAnimation />
           </motion.div>
 
         </div>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FileText, Download, X, Bot, CheckCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Download, X, Bot, CheckCircle } from 'lucide-react';
 import { Button } from './Button';
 import type { TransactionDetail } from '../types';
 
@@ -34,7 +34,7 @@ Impossible Travel: ${tx.telemetry?.impossible_travel ? 'YES' : 'NO'}
 
 --- AI EXPLAINABILITY (SHAP) ---
 The XGBoost ensemble model identified the following primary risk vectors driving the fraud prediction:
-${tx.prediction?.shap_explanation || 'High risk of coordinated fraudulent behavior.'}
+${tx.prediction?.natural_language_explanation || 'High risk of coordinated fraudulent behavior.'}
 
 --- RECOMMENDED ACTION ---
 System highly recommends immediate account freeze and step-up authentication. 

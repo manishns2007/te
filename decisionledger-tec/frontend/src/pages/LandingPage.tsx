@@ -5,6 +5,7 @@ import { Activity, Shield, Zap, BarChart3, Database } from 'lucide-react';
 import { Card } from '../components/Card';
 import { StatusChip } from '../components/StatusChip';
 import VariableProximity from '../components/VariableProximity';
+import Particles from '../components/Particles';
 
 export default function LandingPage() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -12,8 +13,19 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-background overflow-hidden relative" ref={containerRef}>
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/10 blur-[100px]" />
-        <div className="absolute top-[20%] right-[-5%] w-[30%] h-[30%] rounded-full bg-risk-red/10 blur-[100px]" />
+        <Particles
+          particleColors={["#ffffff", "#38bdf8", "#a855f7"]}
+          particleCount={250}
+          particleSpread={10}
+          speed={0.1}
+          particleBaseSize={100}
+          moveParticlesOnHover={false}
+          alphaParticles={false}
+          disableRotation={false}
+          className="w-full h-full"
+        />
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/5 blur-[120px] pointer-events-none" />
+        <div className="absolute top-[20%] right-[-5%] w-[30%] h-[30%] rounded-full bg-secondary/5 blur-[120px] pointer-events-none" />
       </div>
 
       <div className="container mx-auto px-6 py-20 relative z-10">

@@ -111,10 +111,6 @@ export default function LandingPage() {
         {/* Roadmap Section */}
         <div className="mt-20 pb-32">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 border border-secondary/30 text-secondary text-sm mb-4">
-              <Zap size={14} />
-              <span>Powered by Gemini API</span>
-            </div>
             <h2 className="text-3xl font-bold text-white mb-4">Product Roadmap</h2>
             <p className="text-slate-400 max-w-2xl mx-auto">The next generation of autonomous SOC capabilities, currently in development.</p>
           </div>

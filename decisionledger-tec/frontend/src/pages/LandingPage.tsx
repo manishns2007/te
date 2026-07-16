@@ -107,6 +107,46 @@ export default function LandingPage() {
             </Card>
           </div>
         </div>
+        
+        {/* Roadmap Section */}
+        <div className="mt-20 pb-32">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 border border-secondary/30 text-secondary text-sm mb-4">
+              <Zap size={14} />
+              <span>Powered by Gemini API</span>
+            </div>
+            <h2 className="text-3xl font-bold text-white mb-4">Product Roadmap</h2>
+            <p className="text-slate-400 max-w-2xl mx-auto">The next generation of autonomous SOC capabilities, currently in development.</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {[
+              { title: "Automated SAR Generator", desc: "Instant, compliance-ready Suspicious Activity Report generation using Gemini." },
+              { title: "AI Investigator Chat", desc: "Context-aware chatbot to query transaction telemetry and SHAP values in plain English." },
+              { title: "Natural Language Rule Engine", desc: "Create complex fraud detection rules simply by typing what you want the engine to catch." },
+              { title: "Smart Action Recommendations", desc: "Dynamic mitigation steps (e.g., forced password resets) based on real-time threat intelligence." }
+            ].map((feature, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="relative group"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <Card className="relative p-6 bg-surface/80 border-slate-800 h-full backdrop-blur-xl hover:border-slate-600 transition-colors">
+                  <div className="flex justify-between items-start mb-2">
+                    <h3 className="text-white font-medium">{feature.title}</h3>
+                    <span className="text-[10px] uppercase tracking-wider bg-slate-800 text-slate-400 px-2 py-1 rounded font-semibold">Coming Soon</span>
+                  </div>
+                  <p className="text-slate-400 text-sm leading-relaxed">{feature.desc}</p>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
       </div>
     </div>
   );

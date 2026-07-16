@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Download, X, Bot, CheckCircle } from 'lucide-react';
 import { Button } from './Button';
 import type { TransactionDetail } from '../types';
+import ElectricBorder from './ElectricBorder';
 
 interface ReportGeneratorProps {
   tx: TransactionDetail;
@@ -66,49 +67,59 @@ A formal investigation has been automatically queued.`;
         exit={{ opacity: 0, scale: 0.95 }}
         className="bg-slate-900 border border-slate-700 rounded-xl shadow-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[85vh]"
       >
-        <div className="flex justify-between items-center p-4 border-b border-slate-800 bg-slate-900/50">
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-primary/20 rounded-lg text-primary">
-              <Bot size={20} />
+        <ElectricBorder
+          color="#38bdf8"
+          speed={1}
+          chaos={0.12}
+          borderRadius={12}
+          className="w-full h-full"
+        >
+          <div className="flex flex-col w-full h-full max-h-[85vh]">
+            <div className="flex justify-between items-center p-4 border-b border-slate-800 bg-slate-900/50">
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-primary/20 rounded-lg text-primary">
+                  <Bot size={20} />
+                </div>
+                <div>
+                  <h3 className="text-white font-medium">GenAI Investigation Copilot</h3>
+                  <p className="text-xs text-slate-400">Synthesizing compliance report...</p>
+                </div>
+              </div>
+              <button onClick={onClose} className="text-slate-400 hover:text-white transition-colors relative z-10">
+                <X size={20} />
+              </button>
             </div>
-            <div>
-              <h3 className="text-white font-medium">GenAI Investigation Copilot</h3>
-              <p className="text-xs text-slate-400">Synthesizing compliance report...</p>
+
+            <div className="p-6 overflow-y-auto flex-1 bg-slate-950 font-mono text-sm text-slate-300 whitespace-pre-wrap leading-relaxed relative z-10">
+              {displayedText}
+              {isGenerating && <span className="inline-block w-2 h-4 bg-primary ml-1 animate-pulse" />}
+            </div>
+
+            <div className="p-4 border-t border-slate-800 bg-slate-900/50 flex justify-between items-center relative z-10">
+              <div className="text-xs text-slate-500 flex items-center gap-2">
+                {isGenerating ? (
+                  <span className="flex items-center gap-2 text-primary animate-pulse">
+                    Generating text...
+                  </span>
+                ) : (
+                  <span className="flex items-center gap-2 text-risk-green">
+                    <CheckCircle size={14} />
+                    Report generation complete
+                  </span>
+                )}
+              </div>
+              <Button 
+                onClick={handleDownload} 
+                disabled={isGenerating}
+                variant="primary"
+                className="flex items-center gap-2 shadow-lg shadow-primary/20 relative z-20"
+              >
+                <Download size={16} />
+                Export Official SAR
+              </Button>
             </div>
           </div>
-          <button onClick={onClose} className="text-slate-400 hover:text-white transition-colors">
-            <X size={20} />
-          </button>
-        </div>
-
-        <div className="p-6 overflow-y-auto flex-1 bg-slate-950 font-mono text-sm text-slate-300 whitespace-pre-wrap leading-relaxed">
-          {displayedText}
-          {isGenerating && <span className="inline-block w-2 h-4 bg-primary ml-1 animate-pulse" />}
-        </div>
-
-        <div className="p-4 border-t border-slate-800 bg-slate-900/50 flex justify-between items-center">
-          <div className="text-xs text-slate-500 flex items-center gap-2">
-            {isGenerating ? (
-              <span className="flex items-center gap-2 text-primary animate-pulse">
-                Generating text...
-              </span>
-            ) : (
-              <span className="flex items-center gap-2 text-risk-green">
-                <CheckCircle size={14} />
-                Report generation complete
-              </span>
-            )}
-          </div>
-          <Button 
-            onClick={handleDownload} 
-            disabled={isGenerating}
-            variant="primary"
-            className="flex items-center gap-2 shadow-lg shadow-primary/20"
-          >
-            <Download size={16} />
-            Export Official SAR
-          </Button>
-        </div>
+        </ElectricBorder>
       </motion.div>
     </div>
   );

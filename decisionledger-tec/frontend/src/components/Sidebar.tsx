@@ -12,12 +12,6 @@ export default function Sidebar() {
     <aside className="w-64 bg-surface border-r border-slate-700 flex flex-col hidden md:flex shrink-0">
       <nav className="flex-1 py-6 px-4 space-y-2">
         {navItems.map((item) => (
-          item.disabled ? (
-            <div key={item.name} className="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-500 cursor-not-allowed">
-              {item.icon}
-              <span className="font-medium">{item.name}</span>
-            </div>
-          ) : (
             <NavLink 
               key={item.name} 
               to={item.path}
@@ -28,7 +22,6 @@ export default function Sidebar() {
               {item.icon}
               <span>{item.name}</span>
             </NavLink>
-          )
         ))}
       </nav>
     </aside>

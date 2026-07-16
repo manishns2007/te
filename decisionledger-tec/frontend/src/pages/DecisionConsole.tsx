@@ -9,7 +9,8 @@ import { StatusChip } from '../components/StatusChip';
 import { LoadingSpinner } from '../components/LoadingSpinner';
 import { ErrorState } from '../components/ErrorState';
 import { Button } from '../components/Button';
-import { ArrowLeft, RefreshCw, CheckCircle, ShieldAlert, Monitor, AlertTriangle } from 'lucide-react';
+import { RelationshipGraph } from '../components/RelationshipGraph';
+import { ArrowLeft, RefreshCw, CheckCircle, ShieldAlert, Monitor, AlertTriangle, Activity, Share2 } from 'lucide-react';
 
 export default function DecisionConsole() {
   const { transactionId } = useParams<{ transactionId: string }>();
@@ -21,6 +22,7 @@ export default function DecisionConsole() {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [repredicting, setRepredicting] = useState(false);
+  const [activeTab, setActiveTab] = useState<'overview' | 'graph'>('overview');
 
   useEffect(() => {
     if (!transactionId) return;
@@ -98,7 +100,25 @@ export default function DecisionConsole() {
         <PageHeader title="Transaction Investigation" subtitle={tx.id} />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div className="flex gap-4 mb-8 border-b border-slate-700">
+        <button 
+          onClick={() => setActiveTab('overview')}
+          className={`pb-4 px-2 text-sm font-medium transition-colors border-b-2 flex items-center gap-2 ${activeTab === 'overview' ? 'border-primary text-primary' : 'border-transparent text-slate-400 hover:text-slate-200'}`}
+        >
+          <Activity size={16} />
+          AI Overview
+        </button>
+        <button 
+          onClick={() => setActiveTab('graph')}
+          className={`pb-4 px-2 text-sm font-medium transition-colors border-b-2 flex items-center gap-2 ${activeTab === 'graph' ? 'border-primary text-primary' : 'border-transparent text-slate-400 hover:text-slate-200'}`}
+        >
+          <Share2 size={16} />
+          Relationship Graph
+        </button>
+      </div>
+
+      {activeTab === 'overview' ? (
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         
         {/* LEFT COLUMN: Customer & TX */}
         <div className="lg:col-span-3 space-y-6">
@@ -265,8 +285,10 @@ export default function DecisionConsole() {
             </div>
           </Card>
         </div>
-        
-      </div>
+        </div>
+      ) : (
+        <RelationshipGraph transactionId={tx.id} />
+      )}
     </motion.div>
   );
 }

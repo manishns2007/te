@@ -10,7 +10,8 @@ import { LoadingSpinner } from '../components/LoadingSpinner';
 import { ErrorState } from '../components/ErrorState';
 import { Button } from '../components/Button';
 import { RelationshipGraph } from '../components/RelationshipGraph';
-import { ArrowLeft, RefreshCw, CheckCircle, ShieldAlert, Monitor, AlertTriangle, Activity, Share2 } from 'lucide-react';
+import { ReportGenerator } from '../components/ReportGenerator';
+import { ArrowLeft, RefreshCw, CheckCircle, ShieldAlert, Monitor, AlertTriangle, Activity, Share2, FileText } from 'lucide-react';
 
 export default function DecisionConsole() {
   const { transactionId } = useParams<{ transactionId: string }>();
@@ -23,6 +24,7 @@ export default function DecisionConsole() {
   const [success, setSuccess] = useState(false);
   const [repredicting, setRepredicting] = useState(false);
   const [activeTab, setActiveTab] = useState<'overview' | 'graph'>('overview');
+  const [showReport, setShowReport] = useState(false);
 
   useEffect(() => {
     if (!transactionId) return;
@@ -93,11 +95,17 @@ export default function DecisionConsole() {
         </div>
       )}
 
-      <div className="flex items-center gap-4 mb-6">
-        <button onClick={() => navigate('/dashboard')} className="p-2 hover:bg-slate-700 rounded-full transition-colors text-slate-400 hover:text-white">
-          <ArrowLeft size={20} />
-        </button>
-        <PageHeader title="Transaction Investigation" subtitle={tx.id} />
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center gap-4">
+          <button onClick={() => navigate('/dashboard')} className="p-2 hover:bg-slate-700 rounded-full transition-colors text-slate-400 hover:text-white">
+            <ArrowLeft size={20} />
+          </button>
+          <PageHeader title="Transaction Investigation" subtitle={tx.id} />
+        </div>
+        <Button variant="secondary" onClick={() => setShowReport(true)} className="flex items-center gap-2 border-primary/50 text-primary hover:bg-primary/10">
+          <FileText size={16} />
+          Draft SAR Report
+        </Button>
       </div>
 
       <div className="flex gap-4 mb-8 border-b border-slate-700">
@@ -288,6 +296,10 @@ export default function DecisionConsole() {
         </div>
       ) : (
         <RelationshipGraph transactionId={tx.id} />
+      )}
+
+      {showReport && (
+        <ReportGenerator tx={tx} onClose={() => setShowReport(false)} />
       )}
     </motion.div>
   );

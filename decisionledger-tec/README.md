@@ -3,7 +3,7 @@
 
 DecisionLedger TEC is an enterprise-grade hackathon prototype designed for banking Security Operations Centers (SOC). It breaks traditional data silos by correlating financial transactions with real-time cybersecurity telemetry (e.g., VPN usage, endpoint malware). Powered by **Explainable AI** and **GenAI**, it calculates fraud probabilities and automates compliance reporting—allowing investigators to freeze fraudulent funds faster and with absolute confidence.
 
-🔗 **Live Demo:** [dec-ledger.vercel.app](https://dec-ledger.vercel.app) *(Replace with your actual links)*
+🔗 **Live Demo:** [dec-ledger.vercel.app](https://dec-ledger.vercel.app) 
 
 ---
 

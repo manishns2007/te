@@ -1,60 +1,61 @@
-# DecisionLedger TEC: AI-Powered Fraud Intelligence
+# 🛡️ DecisionLedger TEC
+> **AI-Powered Banking Fraud Decision Intelligence Platform**
 
-DecisionLedger TEC is a next-generation "Command Center" designed for banking Security Operations Centers (SOC). Traditional banking fraud tools analyze financial transactions in isolation. DecisionLedger breaks down these silos by correlating financial data with real-time cybersecurity telemetry (e.g., VPN detection, impossible travel, endpoint malware alerts). 
+DecisionLedger TEC is an enterprise-grade hackathon prototype designed for banking Security Operations Centers (SOC). It breaks traditional data silos by correlating financial transactions with real-time cybersecurity telemetry (e.g., VPN usage, endpoint malware). Powered by **Explainable AI** and **GenAI**, it calculates fraud probabilities and automates compliance reporting—allowing investigators to freeze fraudulent funds faster and with absolute confidence.
 
-Powered by Explainable AI (SHAP) and GenAI (Gemini), the platform calculates fraud probabilities and provides investigators with instant, human-readable compliance reports, allowing them to freeze fraudulent activity before funds are lost.
+🔗 **Live Demo:** [dec-ledger.vercel.app](https://dec-ledger.vercel.app) *(Replace with your actual links)*
 
-## 🌟 Key Features
+---
 
-- **Unified Telemetry:** Correlates money movement with cyber-risk indicators.
-- **Explainable AI (XAI):** Uses SHAP values to explain exactly *why* a transaction was flagged (no "black box" decisions).
-- **GenAI Copilot:** Automates the drafting of FinCEN-compliant Suspicious Activity Reports (SAR) using Google's Gemini API.
-- **Neon Command Center UI:** A stunning, highly-interactive frontend built with React Bits (WebGL Particles, Electric Borders, Proximity text).
+## ✨ Why It Stands Out
+
+*   **Unified Telemetry:** We don't just look at money moving. We correlate transaction amounts with IP trust scores, impossible travel alerts, and endpoint malware data.
+*   **Explainable AI (XAI):** No "black box" decisions. Using XGBoost and SHAP values, the platform tells the investigator exactly *why* a transaction was flagged (e.g., "Flagged due to: Unknown Device & Impossible Travel").
+*   **GenAI Copilot:** Integrates Google Gemini to instantly translate complex telemetry into structured, FinCEN-ready Suspicious Activity Reports (SARs).
+*   **"Neon" Command Center:** A highly interactive, dark-mode workspace built specifically to reduce cognitive load during high-stress SOC investigations.
+
+---
 
 ## 🛠️ Tech Stack
 
-**Frontend:**
-- React (Vite)
-- TypeScript
-- Tailwind CSS (v4)
-- Framer Motion
-- React Bits (UI Components)
-- Vercel (Deployment)
+**Frontend (The Command Center):**
+*   React, TypeScript, Vite, Tailwind CSS (v4)
+*   Framer Motion & React Bits (For premium UI/UX)
+*   Deployed on **Vercel**
 
-**Backend:**
-- Python 3
-- FastAPI & Uvicorn
-- SQLite (Persistent Storage)
-- XGBoost (Machine Learning)
-- Railway / Render (Deployment)
+**Backend (The Intelligence Engine):**
+*   Python 3, FastAPI, SQLite
+*   Deployed on **Railway**
 
-## 🚀 How to Run Locally
+**Machine Learning (The Brain):**
+*   **XGBoost:** Core predictive model.
+*   **SHAP:** For Explainable AI feature importance.
+*   **Google Gemini API:** For automated SAR generation.
 
-### 1. Start the Backend (FastAPI)
-Open a terminal in the `backend` directory:
+---
+
+## 🚀 Quick Start (Run Locally)
+
+### 1. Start the Backend API
 ```bash
 cd backend
 python -m venv venv
-# Activate virtual environment
-# Windows: venv\Scripts\activate
-# Mac/Linux: source venv/bin/activate
-
+# Activate venv (Windows: venv\Scripts\activate | Mac/Linux: source venv/bin/activate)
 pip install -r requirements.txt
-python -m uvicorn app.main:app --reload
+python scripts/seed_database.py
+uvicorn app.main:app --reload
 ```
-The backend API will be available at `http://localhost:8000`.
+*API runs at `http://localhost:8000` | Swagger Docs at `http://localhost:8000/docs`*
 
-### 2. Start the Frontend (React/Vite)
-Open a new terminal in the `frontend` directory:
+### 2. Start the Frontend UI
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
-The frontend will be available at `http://localhost:5173`. 
+*App runs at `http://localhost:5173`*
 
-*(Note: Ensure your `.env` file in the frontend has `VITE_API_BASE_URL=http://localhost:8000/api` for local testing).*
+---
 
-## 🏆 Hackathon Submission
-
-This project was built for the **Finspark Hackathon 2026** sponsored by the Bank of Maharashtra.
+## 🏆 Finspark Hackathon 2026
+Built as a demonstration of next-generation fraud analytics, proving that combining AI with deep cybersecurity context creates a fundamentally safer banking ecosystem.

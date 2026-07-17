@@ -1,4 +1,5 @@
 {
+  "name": "dec-ledger",
   "rewrites": [
     {
       "source": "/(.*)",
